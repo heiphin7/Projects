@@ -4,22 +4,27 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        // Приветстиве игрока
         System.out.println("Добро пожаловать в консольную игру - Судоку");
         System.out.println("Есть 3 уровня сложности:");
         System.out.println("Легкая");
         System.out.println("Средняя");
         System.out.println("Сложная");
         System.out.println("Выберите уровень сложности цифрой от 1 до 3 (При неверном значении будет выбран уровень easy)");
+        // Выбор уровня сложности
         int n = scanner.nextInt();
+        // Создаём новый двумерный массив с нужным уровнем сложности, который ввел игрок
         int[][] sudoku = presets.returnArrays(n);
-
-
+    
+        // Запускаем цикл, который идет пока Судоку не был решён, проверка на решенность находится в файле SudokuChecker.java 
         while(!SudokuChecker.isSudokuSolved(presets.returnArrays(n))){
             System.out.println("Игра напчалась!");
             System.out.println("Если вы хотите убедиться в правильности хода, не стоит волноваться, игра сама оповестит вас если вы ввели непавильную строку или число");
             System.out.println("У вас есть 2 действия:");
             System.out.println("Введите 1, чтобы вывести Судоку");
             System.out.println("Введите 2, если хотите ввести изменения в Судоку");
+            // Запускаем вложенный цикл, в котором игрок уже будет выполнять действия
+            // Либо вывод массива либо изменения
             while(true){
                 int a = scanner.nextInt(); // переменная для считывания действии
                 if(a == 1){
